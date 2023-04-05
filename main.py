@@ -22,7 +22,7 @@ with open("faiss_store.pkl", "rb") as f:
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(
-    temperature=0, api_key=openai_api_key), vectorstore=store)
+    temperature=0, openai_api_key=openai_api_key), vectorstore=store)
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
