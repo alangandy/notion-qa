@@ -4,5 +4,4 @@ faiss-cpu
 streamlit
 streamlit-chat
 streamlit
-pickle
 python-dotenv
