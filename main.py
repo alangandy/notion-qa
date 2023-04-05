@@ -12,7 +12,7 @@ import pickle
 load_dotenv()
 
 # Set the OpenAI API Key
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+os.environ.get("OPENAI_API_KEY", "your_default_key")
 
 # Load the LangChain.
 index = faiss.read_index("docs.index")
