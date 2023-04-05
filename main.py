@@ -24,6 +24,7 @@ store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(
     temperature=0, api_key=OPENAI_API_KEY), vectorstore=store)
 
+
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
 st.header("Blendle Notion QA Bot")
