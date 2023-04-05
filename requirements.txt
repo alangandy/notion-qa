@@ -5,3 +5,4 @@ streamlit
 streamlit-chat
 streamlit
 python-dotenv
+tiktoken
