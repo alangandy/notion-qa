@@ -25,8 +25,8 @@ chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(
     api_key=OPENAI_API_KEY), vectorstore=store)
 
 # From here down is all the StreamLit UI.
-st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
-st.header("Blendle Notion QA Bot")
+st.set_page_config(page_title="C++ Q&A Bot", page_icon=":robot:")
+st.header("C++ Q&A Bot")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -36,14 +36,14 @@ if "past" not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("You: ", "Hello, how are you?", key="input")
+    input_text = st.text_input("You: ", "Ask your question here", key="input")
     return input_text
 
 
 user_input = get_text()
 
 if user_input:
-    print(f"User input: {user_input}")  # Add this line for debugging
+    # print(f"User input: {user_input}")  # Add this line for debugging
     result = chain({"question": user_input})
     output = f"Answer: {result['answer']}\nSources: {result['sources']}"
 
