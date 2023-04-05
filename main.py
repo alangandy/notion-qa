@@ -6,7 +6,7 @@ from streamlit_chat import message
 import faiss
 from langchain import OpenAI
 from langchain.chains import VectorDBQAWithSourcesChain
-
+import pickle
 
 # Load environment variables
 load_dotenv()
