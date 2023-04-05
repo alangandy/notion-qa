@@ -1,4 +1,4 @@
-"""Python file to serve as the frontend"""
+# main.py
 import os
 from dotenv import load_dotenv
 import streamlit as st
@@ -12,7 +12,7 @@ import pickle
 load_dotenv()
 
 # Set the OpenAI API Key
-openai_api_key = os.environ.get("OPENAI_API_KEY", "your_default_key")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Load the LangChain.
 index = faiss.read_index("docs.index")
@@ -22,7 +22,7 @@ with open("faiss_store.pkl", "rb") as f:
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(
-    temperature=0, openai_api_key=openai_api_key), vectorstore=store)
+    api_key=OPENAI_API_KEY), vectorstore=store)
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
@@ -43,6 +43,7 @@ def get_text():
 user_input = get_text()
 
 if user_input:
+    print(f"User input: {user_input}")  # Add this line for debugging
     result = chain({"question": user_input})
     output = f"Answer: {result['answer']}\nSources: {result['sources']}"
 
