@@ -21,8 +21,13 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
 store.index = index
-chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(
-    api_key=OPENAI_API_KEY), vectorstore=store)
+# chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(
+#    api_key=OPENAI_API_KEY), vectorstore=store)
+
+chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAIChat(
+    api_key=OPENAI_API_KEY, model_name='gpt-3.5-turbo'), vectorstore=store)
+
+# OpenAIChat(model_name='gpt-3.5-turbo')
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="C++ Q&A Bot", page_icon=":robot:")
