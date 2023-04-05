@@ -47,4 +47,4 @@ if user_input:
     result = chain({"question": user_input})
     output = f"Answer: {result['answer']}\nSources: {result['sources']}"
 
-    st.session_state.past
+    st.write(output)
